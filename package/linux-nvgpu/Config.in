@@ -1,0 +1,13 @@
+######################################################
+#
+# Linux NVGPU drivers
+#
+######################################################
+
+config BR2_PACKAGE_LINUX_NVGPU
+    bool
+    depends on BR2_LINUX_KERNEL
+    help
+      NVIDIA NVGPU drivers
+
+      This is only the download helper for the kernel patch
