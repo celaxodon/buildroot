@@ -1,0 +1,29 @@
+#################################################
+#
+# NVIDIA hardware packages
+#
+#################################################
+
+menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
+    bool "Nvidia hardware libraries"
+    depends on BR2_LINUX_KERNEL
+    select BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T210
+    help
+      Linux NVIDIA hardware source trees
+
+      These must be arranged into a specific directory tree.
+      Mirrors Linux_for_Tegra/sources/hardware/nvidia
+
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_COMMON
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_JETSON
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_TEGRA_COMMON
+
+# config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T18X
+# config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_19X
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T18X_COMMON
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T18X_QUILL
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T19X_COMMON
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T19X_STARDUST_BCT
+# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_PORG
+
+source "package/hardware-nvidia/soc-t210/Config.in"
