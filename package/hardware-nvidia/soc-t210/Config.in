@@ -1,0 +1,8 @@
+config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T210
+    bool "SoC T210 library"
+    depends on BR2_PACKAGE_HARDWARE_NVIDIA
+    default y
+    help
+        NVIDIA T210 Jetson hardware drivers
+
+        nv-tegra.nvidia.com/hardware/nvidia/soc/t210.git

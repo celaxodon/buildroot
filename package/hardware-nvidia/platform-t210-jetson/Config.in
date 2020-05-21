@@ -1,0 +1,7 @@
+config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_JETSON
+    bool
+    depends on BR2_LINUX_KERNEL
+    help
+        NVIDIA T210 Jetson hardware drivers
+
+        https://developer.nvidia.com/embedded/linux-tegra
