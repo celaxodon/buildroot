@@ -1,0 +1,8 @@
+config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_PORG
+    bool "Platform T210 Porg Device Tree Source"
+    depends on BR2_PACKAGE_HARDWARE_NVIDIA
+    default y
+    help
+        NVIDIA T210 Porg Device Tree Source
+
+        nv-tegra.nvidia.com/hardware/nvidia/platform/t210/porg.git
