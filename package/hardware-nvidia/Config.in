@@ -7,6 +7,7 @@
 menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
     bool "Nvidia hardware libraries"
     depends on BR2_LINUX_KERNEL
+    select BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_PORG
     select BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T210
     help
       Linux NVIDIA hardware source trees
