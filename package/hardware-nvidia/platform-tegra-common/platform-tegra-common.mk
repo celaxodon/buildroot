@@ -16,4 +16,3 @@ define PLATFORM_TEGRA_COMMON_CONFIGURE_CMDS
 endef
 
 $(eval $(generic-package))
-
