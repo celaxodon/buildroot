@@ -27,4 +27,7 @@ menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
 # config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T19X_STARDUST_BCT
 
 source "package/hardware-nvidia/platform-t210-porg/Config.in"
+source "package/hardware-nvidia/platform-t210-common/Config.in"
+source "package/hardware-nvidia/platform-t210-jetson/Config.in"
+source "package/hardware-nvidia/platform-tegra-common/Config.in"
 source "package/hardware-nvidia/soc-t210/Config.in"
