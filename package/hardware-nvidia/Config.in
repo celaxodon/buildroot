@@ -1,8 +1,8 @@
-#################################################
+###############################################################################
 #
 # NVIDIA hardware packages
 #
-#################################################
+###############################################################################
 
 menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
     bool "Nvidia hardware libraries"
@@ -12,13 +12,10 @@ menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
     help
       Linux NVIDIA hardware source trees
 
-      These must be arranged into a specific directory tree.
+      These must be arranged into a specific directory structure.
       Mirrors Linux_for_Tegra/sources/hardware/nvidia
 
-# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_COMMON
-# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_JETSON
-# config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_TEGRA_COMMON
-#
+# Unimplemented parts of the full DTS tree:
 # config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T18X
 # config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_19X
 # config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T18X_COMMON
