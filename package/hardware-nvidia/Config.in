@@ -16,8 +16,6 @@ menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
       Mirrors Linux_for_Tegra/sources/hardware/nvidia
 
 # Unimplemented parts of the full DTS tree:
-# config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T18X
-# config BR2_PACKAGE_HARDWARE_NVIDIA_SOC_19X
 # config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T18X_COMMON
 # config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T18X_QUILL
 # config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T19X_COMMON
@@ -27,4 +25,6 @@ source "package/hardware-nvidia/platform-t210-porg/Config.in"
 source "package/hardware-nvidia/platform-t210-common/Config.in"
 source "package/hardware-nvidia/platform-t210-jetson/Config.in"
 source "package/hardware-nvidia/platform-tegra-common/Config.in"
+source "package/hardware-nvidia/soc-t18x/Config.in"
+source "package/hardware-nvidia/soc-t19x/Config.in"
 source "package/hardware-nvidia/soc-t210/Config.in"
