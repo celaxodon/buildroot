@@ -10,9 +10,9 @@ PLATFORM_T210_JETSON_SITE = git://nv-tegra.nvidia.com/device/hardware/nvidia/pla
 PLATFORM_T210_JETSON_INSTALL_STAGING = YES
 
 define PLATFORM_T210_JETSON_CONFIGURE_CMDS
-    mkdir -p $(NV_BUILD_KERNEL_DTS_ROOT)/hardware/nvidia/platform/t210
+    mkdir -p $(NV_BUILD_KERNEL_DTS_ROOT)/platform/t210
 	ln -s $(BUILD_DIR)/platform-t210-jetson-$(PLATFORM_T210_JETSON_VERSION) \
-		$(NV_BUILD_KERNEL_DTS_ROOT)/hardware/nvidia/platform/t210/jetson
+		$(NV_BUILD_KERNEL_DTS_ROOT)/platform/t210/jetson
 endef
 
 $(eval $(generic-package))

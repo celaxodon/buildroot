@@ -10,9 +10,9 @@ PLATFORM_T210_PORG_SITE = git://nv-tegra.nvidia.com/device/hardware/nvidia/platf
 PLATFORM_T210_PORG_INSTALL_STAGING = YES
 
 define PLATFORM_T210_PORG_CONFIGURE_CMDS
-    mkdir -p $(NV_BUILD_KERNEL_DTS_ROOT)/hardware/nvidia/platform/t210
+    mkdir -p $(NV_BUILD_KERNEL_DTS_ROOT)/platform/t210
     ln -s $(BUILD_DIR)/platform-t210-porg-$(PLATFORM_T210_PORG_VERSION) \
-        $(NV_BUILD_KERNEL_DTS_ROOT)/hardware/nvidia/platform/t210/porg
+        $(NV_BUILD_KERNEL_DTS_ROOT)/platform/t210/porg
 endef
 
 $(eval $(generic-package))
