@@ -10,9 +10,9 @@ SOC_T18X_SITE = git://nv-tegra.nvidia.com/device/hardware/nvidia/soc/t18x.git
 SOC_T18X_INSTALL_STAGING = YES
 
 define SOC_T18X_CONFIGURE_CMDS
-    mkdir -p $(NV_BUILD_KERNEL_DTS_ROOT)/hardware/nvidia/soc
+    mkdir -p $(NV_BUILD_KERNEL_DTS_ROOT)/soc
 	ln -s $(BUILD_DIR)/soc-t18x-$(SOC_T18X_VERSION) \
-		$(NV_BUILD_KERNEL_DTS_ROOT)/hardware/nvidia/soc/t18x
+		$(NV_BUILD_KERNEL_DTS_ROOT)/soc/t18x
 endef
 
 $(eval $(generic-package))

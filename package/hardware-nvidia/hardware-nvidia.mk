@@ -4,7 +4,8 @@
 #
 #################################################
 
-# $(BUILD_DIR)/nvhardware maps to Linux_for_Tegra/sources/hardware/nvidia
-NV_BUILD_KERNEL_DTS_ROOT = $(BUILD_DIR)/nvhardware
+# $(BUILD_DIR)/hardware/nvidia maps to Linux_for_Tegra/sources/hardware/nvidia
+# TODO: Try to get rid of the 'hardware/nvidia' directories - depends on build scripts
+NV_BUILD_KERNEL_DTS_ROOT = $(BUILD_DIR)/hardware/nvidia
 
 include $(sort $(wildcard package/hardware-nvidia/*/*.mk))
