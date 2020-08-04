@@ -53,18 +53,13 @@ config BR2_LINUX_KERNEL_EXT_RTAI
 	  RTAI Kernel part.
 
 #-------------------------------------------------------------------------------
-# NVIDIA Linux drivers and firmware
+# NVIDIA Linux drivers and patches
 config BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
-    bool "NVIDIA Linux drivers and firmware"
+    bool "NVIDIA Linux drivers and patches"
     select BR2_PACKAGE_LINUX_NVIDIA
     select BR2_PACKAGE_LINUX_NVGPU
-    # select BR2_PACKAGE_PLATFORM_T210_COMMON
-    # select BR2_PACKAGE_PLATFORM_T210_JETSON
-    # select BR2_PACKAGE_PLATFORM_T210_PORG
-    # select BR2_PACKAGE_PLATFORM_TEGRA_COMMON
-    # select BR2_PACKAGE_SOC_T210
     help
-      NVIDIA Linux kernel drivers
+      NVIDIA Linux kernel drivers and patches
 
       https://developer.nvidia.com/embedded/linux-tegra
 
