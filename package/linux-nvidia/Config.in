@@ -1,16 +1,8 @@
-###############################################################################
-#
-# Linux nvidia drivers
-#
-###############################################################################
-
 config BR2_PACKAGE_LINUX_NVIDIA
-    bool
-    depends on BR2_LINUX_KERNEL
+	bool
+	depends on BR2_LINUX_KERNEL
 	help
-      Linux NVIDIA source code
-
-	  This option allows Buildroot to get the NVIDIA Linux kernel drivers
-	  code from a Git repository.
-
-      This is only the download helper for the kernel patch.
+	  NVIDIA Linux source code. This option allows Buildroot to
+	  get the NVIDIA Linux kernel drivers code from a Git
+	  repository. This is only the download helper for the kernel
+	  patch.
