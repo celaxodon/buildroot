@@ -1,7 +1,7 @@
 config BR2_PACKAGE_PLATFORM_T210_COMMON
-    bool "Platform T210 Common Device Tree Source"
-    depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
-    help
-        NVIDIA T210 Common hardware drivers
+	bool "Platform T210 Common Device Tree Source"
+	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+	help
+	  NVIDIA T210 Common hardware drivers
 
-        nv-tegra.nvidia.com/device/hardware/nvidia/platform/t210/common.git
+	  https://developer.nvidia.com/embedded/linux-tegra
