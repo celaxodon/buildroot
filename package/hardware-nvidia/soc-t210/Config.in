@@ -1,7 +1,7 @@
 config BR2_PACKAGE_SOC_T210
-    bool "SoC T210 Device Tree Source"
-    depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
-    help
-        NVIDIA T210 Jetson hardware drivers
+	bool "SoC T210 Device Tree Source"
+	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+	help
+	  NVIDIA T210 Jetson hardware drivers
 
-        nv-tegra.nvidia.com/hardware/nvidia/soc/t210.git
+	  https://developer.nvidia.com/embedded/linux-tegra

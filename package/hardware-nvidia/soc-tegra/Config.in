@@ -1,7 +1,7 @@
 config BR2_PACKAGE_SOC_TEGRA
-    bool "SoC Tegra Device Tree Source"
-    depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
-    help
-        NVIDIA Tegra Jetson hardware drivers
+	bool "SoC Tegra Device Tree Source"
+	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+	help
+	  NVIDIA Tegra Jetson hardware drivers
 
-        nv-tegra.nvidia.com/hardware/nvidia/soc/tegra.git
+	  https://developer.nvidia.com/embedded/linux-tegra
