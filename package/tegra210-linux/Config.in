@@ -1,0 +1,9 @@
+config BR2_PACKAGE_TEGRA210_LINUX
+	bool "Tegra T210 Board Support Package"
+	depends on BR2_PACKAGE_LINUX_NVIDIA
+	help
+	  NVIDIA Tegra210 board support package.
+	  Includes binaries and tools required for the flashing and
+	  booting process.
+
+	  https://developer.nvidia.com/embedded/linux-tegra
