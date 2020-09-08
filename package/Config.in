@@ -462,7 +462,7 @@ endmenu
 	source "package/gpsd/Config.in"
 	source "package/gptfdisk/Config.in"
 	source "package/gvfs/Config.in"
-    source "package/hardware-nvidia/Config.in"
+	source "package/hardware-nvidia/Config.in"
 	source "package/hdparm/Config.in"
 	source "package/hwdata/Config.in"
 	source "package/hwloc/Config.in"

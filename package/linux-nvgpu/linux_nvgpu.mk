@@ -8,7 +8,7 @@ LINUX_NVGPU_VERSION = tegra-l4t-r32.4.2
 LINUX_NVGPU_SITE = git://nv-tegra.nvidia.com/linux-nvgpu.git
 # TODO: Dbl check this when verifying licensing
 LINUX_NVGPU_LICENSE = TODO
-LINUX_NVGPU_LICENSE_FILES = TODO
+# LINUX_NVGPU_LICENSE_FILES = TODO
 
 # XXX: Explore replacing with space-separated list in KERNEL_OVERLAYS env var from L4T Makefile
 define LINUX_NVGPU_CONFIGURE_CMDS
