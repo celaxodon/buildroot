@@ -33,7 +33,6 @@ define TEGRA210_LINUX_BUILD_CMDS
 	--board mmcblk0p1 \
 	--output $(@D)/bootloader/boot.img \
 	--cmdline 'root=/dev/mmcblk0p1 rw rootwait rootfstype=ext4 console=ttyS0,115200n8 console=tty0 fbcon=map:0 net.ifnames=0'
-
 endef
 
 define TEGRA210_LINUX_INSTALL_IMAGES_CMDS
@@ -44,9 +43,11 @@ endef
 # Other binaries and files required for flashing process
 # NVCFILE -> nvtboot.bin
 # LNXFILE -> boot.img (generated in build step)
+# NOTE: /boot/extlinux/extlinux.conf requires root:root perms
 define TEGRA210_LINUX_INSTALL_TARGET_CMDS
-	$(INSTALL) -m 0644 $(@D)/bootloader/l4t_initrd.img $(TARGET_DIR)/boot/initrd
-	$(INSTALL) -m 0644 $(@D)/bootloader/nv_boot_control.conf $(TARGET_DIR)/etc/nv_boot_control.conf
+	$(INSTALL) -D -m 0644 $(@D)/bootloader/extlinux.conf $(TARGET_DIR)/boot/extlinux/extlinux.conf
+	$(INSTALL) -D -m 0644 $(@D)/bootloader/l4t_initrd.img $(TARGET_DIR)/boot/initrd
+	$(INSTALL) -D -m 0644 $(@D)/bootloader/nv_boot_control.conf $(TARGET_DIR)/etc/nv_boot_control.conf
 
 	sed -i /TNSPEC/d $(TARGET_DIR)/etc/nv_boot_control.conf
 	sed -i '$$ a TNSPEC 3448-300---1-0-jetson-nano-qspi-sd-mmcblk0p1' $(TARGET_DIR)/etc/nv_boot_control.conf
