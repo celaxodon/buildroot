@@ -10,8 +10,6 @@ BSP_DIR="${BUILD_DIR}/tegra210-linux-${BSP_VERSION}"
 
 install_dtb()
 {
-    install -m 0644 -D "${BUILD_DIR}/linux-tegra-l4t-r${BSP_VERSION}/arch/arm64/boot/dts/tegra210-p3448-0000-p3449-0000-b00.dtb" \
-		"${TARGET_DIR}/boot/tegra210-p3448-0000-p3449-0000-b00.dtb"
 
     # Required for tegrasign operations
     install -m 0644 -D "${BUILD_DIR}/linux-tegra-l4t-r${BSP_VERSION}/arch/arm64/boot/dts/tegra210-p3448-0000-p3449-0000-b00.dtb" \
@@ -26,10 +24,10 @@ prepare_tegraflash_files()
     # NOTE: system.img may require size to be aligned to 512 bytes (sectors), that's why -m was used
     # in 1M blocks
     rootfs_blocks=$(du -ms "${TARGET_DIR}" | awk '{print $1}')
-    # From MB -> B. 
+    # From MB -> B
     rootfs_size=$((rootfs_blocks * 1024 * 1024))
     padded_rootfs_size=$((rootfs_size + (rootfs_size / 10)))
-    echo "padded root fs size is "$padded_rootfs_size" Bytes"
+    echo "padded root fs size is "${padded_rootfs_size}" Bytes"
 
     cd "${BSP_DIR}"/bootloader
 
@@ -66,32 +64,14 @@ prepare_tegraflash_files()
 		-e 's/APPFILE/system.img/' \
 		-e '/FBFILE/d' \
 		-e '/BPFDTB-FILE/d' \
-		-e "s/APPSIZE/"$padded_rootfs_size"/" \
+		-e "s/APPSIZE/"${padded_rootfs_size}"/" \
 		flash.xml
 }
 
-install_unsigned_image_files()
-{
-	cd "${BSP_DIR}"/bootloader
-    echo "Installing BSP binaries and images..."
-
-	install -m 0644 -D tegra210-p3448-0000-p3449-0000-b00.dtb "${BINARIES_DIR}"/tegra210-p3448-0000-p3449-0000-b00.dtb
-	install -m 0644 -D cboot.bin "${BINARIES_DIR}"/cboot.bin
-	install -m 0644 -D flash.xml "${BINARIES_DIR}"/flash.xml
-	install -m 0644 -D nvtboot.bin "${BINARIES_DIR}"/nvtboot.bin
-	install -m 0644 -D nvtboot_cpu.bin "${BINARIES_DIR}"/nvtboot_cpu.bin
-	install -m 0644 -D sc7entry-firmware.bin "${BINARIES_DIR}"/sc7entry-firmware.bin
-	install -m 0644 -D tos-mon-only.img "${BINARIES_DIR}"/tos-mon-only.img
-	install -m 0644 -D warmboot.bin "${BINARIES_DIR}"/warmboot.bin
-	install -m 0644 -D nvtboot_recovery.bin "${BINARIES_DIR}"/nvtboot_recovery.bin
-	install -m 0644 -D tos-mon-only.img "${BINARIES_DIR}"/tos-mon-only.img
-	install -m 0644 -D eks.img "${BINARIES_DIR}"/eks.img
-	install -m 0644 -D rp4.blob "${BINARIES_DIR}"/rp4.blob
-}
-
 # tegraflash.py command for signing and generating flash-ready partition imgs:
-tegraflash_sign()
+tegraflash_sign_and_install()
 {
+    echo "Flashing/Signing binaries and copying into ${BINARIES_DIR}/signed"
 	cd "$BSP_DIR"/bootloader
     # NOTE: Requires dtb file and boot.img to be present in the same directory
     cp "$BINARIES_DIR"/boot.img boot.img
@@ -107,29 +87,45 @@ tegraflash_sign()
         --chip 0x21 \
         --bins "EBT cboot.bin; DTB tegra210-p3448-0000-p3449-0000-b00.dtb"
 
-	install -m 0644 -D signed/boot.img.encrypt "${BINARIES_DIR}"/signed/boot.img.encrypt
-	install -m 0644 -D signed/cboot.bin.encrypt "${BINARIES_DIR}"/signed/cboot.bin.encrypt
-	install -m 0644 -D signed/flash.xml "${BINARIES_DIR}"/signed/flash.xml
-	install -m 0644 -D signed/flash.xml.bin "${BINARIES_DIR}"/signed/flash.xml.bin
-	install -m 0644 -D signed/nvtboot.bin.encrypt "${BINARIES_DIR}"/signed/nvtboot.bin.encrypt
-	install -m 0644 -D signed/nvtboot_cpu.bin.encrypt ${BINARIES_DIR}/signed/nvtboot_cpu.bin.encrypt
+	install -m 0644 -D signed/boot.img.encrypt ${BINARIES_DIR}/boot.img.encrypt
+	install -m 0644 -D signed/cboot.bin.encrypt ${BINARIES_DIR}/cboot.bin.encrypt
+	install -m 0644 -D signed/flash.xml ${BINARIES_DIR}/flash.xml
+	install -m 0644 -D signed/flash.xml.bin ${BINARIES_DIR}/flash.xml.bin
+	install -m 0644 -D signed/nvtboot.bin.encrypt ${BINARIES_DIR}/nvtboot.bin.encrypt
+	install -m 0644 -D signed/nvtboot_cpu.bin.encrypt ${BINARIES_DIR}/nvtboot_cpu.bin.encrypt
 	install -m 0644 -D signed/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct \
-        "${BINARIES_DIR}"/signed/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct
-	install -m 0644 -D signed/rcm_0_encrypt.rcm ${BINARIES_DIR}/signed/rcm_0_encrypt.rcm
-	install -m 0644 -D signed/rcm_1_encrypt.rcm ${BINARIES_DIR}/signed/rcm_1_encrypt.rcm
-	install -m 0644 -D signed/sc7entry-firmware.bin.encrypt ${BINARIES_DIR}/signed/sc7entry-firmware.bin.encrypt
+        "${BINARIES_DIR}"/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct
+	install -m 0644 -D signed/sc7entry-firmware.bin.encrypt ${BINARIES_DIR}/sc7entry-firmware.bin.encrypt
 	install -m 0644 -D signed/tegra210-p3448-0000-p3449-0000-b00.dtb.encrypt \
-        "${BINARIES_DIR}"/signed/tegra210-p3448-0000-p3449-0000-b00.dtb.encrypt
-	install -m 0644 -D signed/tos-mon-only.img.encrypt ${BINARIES_DIR}/signed/tos-mon-only.img.encrypt
-	install -m 0644 -D signed/warmboot.bin.encrypt ${BINARIES_DIR}/signed/warmboot.bin.encrypt
+        "${BINARIES_DIR}"/tegra210-p3448-0000-p3449-0000-b00.dtb.encrypt
+	install -m 0644 -D signed/tos-mon-only.img.encrypt ${BINARIES_DIR}/tos-mon-only.img.encrypt
+	install -m 0644 -D signed/warmboot.bin.encrypt ${BINARIES_DIR}/warmboot.bin.encrypt
+    install -m 0644 -D "${BUILD_DIR}/linux-tegra-l4t-r${BSP_VERSION}/arch/arm64/boot/dts/tegra210-p3448-0000-p3449-0000-b00.dtb" \
+		"${TARGET_DIR}/boot/tegra210-p3448-0000-p3449-0000-b00.dtb"
+
+	install -m 0644 -D rp4.blob ${BINARIES_DIR}/rp4.blob
+	install -m 0644 -D eks.img ${BINARIES_DIR}/eks.img
 }
+
+# Install as much as possible from BSP package
+# apply_binaries()
+# {
+#     # ln 205 - extracting
+# }
+
+# add_system_groups()
+# {
+#     # See apply_binaries.sh for more groups
+#     # gpio
+#     # crypto
+#     # trusty
+# }
 
 main()
 {
     install_dtb
     prepare_tegraflash_files
-    # tegraflash_sign
-    install_unsigned_image_files
+    tegraflash_sign_and_install
 }
 
 main
