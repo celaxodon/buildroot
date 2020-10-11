@@ -10,11 +10,9 @@ BR2_TOOLCHAIN_EXTERNAL_HEADERS_4_10=y
 BR2_TOOLCHAIN_EXTERNAL_CUSTOM_GLIBC=y
 BR2_TOOLCHAIN_EXTERNAL_CXX=y
 BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV=y
-# BR2_TARGET_ENABLE_ROOT_LOGIN is not set
 BR2_GENERATE_LOCALE="en_US"
-BR2_ROOTFS_POST_BUILD_SCRIPT="board/nvidia/p3450/post-build.sh"
-BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh board/nvidia/p3450/post-image.sh"
-BR2_ROOTFS_POST_SCRIPT_ARGS="-c board/nvidia/p3450/genimage.cfg"
+BR2_ROOTFS_POST_IMAGE_SCRIPT="support/scripts/genimage.sh board/nvidia/jetson_nano/post-image.sh"
+BR2_ROOTFS_POST_SCRIPT_ARGS="-c board/nvidia/jetson_nano/genimage.cfg"
 BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_CUSTOM_GIT=y
 BR2_LINUX_KERNEL_CUSTOM_REPO_URL="git://nv-tegra.nvidia.com/linux-4.9.git"
