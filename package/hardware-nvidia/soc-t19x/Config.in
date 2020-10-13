@@ -1,7 +1,0 @@
-config BR2_PACKAGE_SOC_T19X
-	bool "SoC T19x Device Tree Source"
-	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
-	help
-	  NVIDIA T19x Jetson hardware drivers
-
-	  https://developer.nvidia.com/embedded/linux-tegra
