@@ -1,8 +1,7 @@
 config BR2_PACKAGE_LINUX_NVIDIA
-	bool
+	bool "Linux for Tegra"
 	depends on BR2_LINUX_KERNEL
 	help
-	  NVIDIA Linux source code. This option allows Buildroot to
-	  get the NVIDIA Linux kernel drivers code from a Git
-	  repository. This is only the download helper for the kernel
-	  patch.
+	  NVIDIA Linux source code for Tegra
+
+	  https://developer.nvidia.com/embedded/linux-tegra

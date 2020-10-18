@@ -1,13 +1,13 @@
 ################################################################################
 #
-# NVIDIA Linux Drivers
+# NVIDIA Linux for Tegra
 #
 ################################################################################
 
+LINUX_NVIDIA_LICENSE = GPL-2.0
+LINUX_NVIDIA_LICENSE_FILES = drivers/Makefile
 LINUX_NVIDIA_VERSION = tegra-l4t-r32.4.2
 LINUX_NVIDIA_SITE = git://nv-tegra.nvidia.com/linux-nvidia.git
-LINUX_NVIDIA_LICENSE = GPL-2.0
-# LINUX_NVIDIA_LICENSE_FILES = TODO
 
 # Must be defined here as well as in hardware-nvidia packages
 export NV_BUILD_KERNEL_DTS_ROOT=$(BUILD_DIR)/hardware/nvidia
