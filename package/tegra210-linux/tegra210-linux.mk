@@ -128,7 +128,6 @@ define TEGRA210_LINUX_INSTALL_TARGET_CMDS
 	sed -i /TEGRA_OTA_GPT_DEVICE/d $(TARGET_DIR)/etc/nv_boot_control.conf
 	sed -i '$$ a TEGRA_OTA_GPT_DEVICE /dev/mtdblock0' $(TARGET_DIR)/etc/nv_boot_control.conf
 
-	# Also in ${TARGET_DIR}/boot/dtb/? Done by flash.sh but boots without.
 	$(INSTALL) -D -m 0644 -D $(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb \
 		$(TARGET_DIR)/boot/tegra210-p3448-0000-p3449-0000-b00.dtb
 endef
