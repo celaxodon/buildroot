@@ -65,8 +65,12 @@ define TEGRA210_LINUX_CONFIGURE_CMDS
 		$(@D)/bootloader/flash.xml
 endef
 
+# define COPY_DTB_FOR_SIGNING
+# 	cp $(BUILD_DIR)/linux-tegra-l4t-r$(TEGRA210_LINUX_VERSION)/arch/arm64/boot/dts/tegra210-p3448-0000-p3449-0000-b00.dtb \
+# 		$(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb
+# endef
 define COPY_DTB_FOR_SIGNING
-	cp $(BUILD_DIR)/linux-tegra-l4t-r$(TEGRA210_LINUX_VERSION)/arch/arm64/boot/dts/tegra210-p3448-0000-p3449-0000-b00.dtb \
+	cp $(BINARIES_DIR)/tegra210-p3448-0000-p3449-0000-b00.dtb \
 		$(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb
 endef
 
