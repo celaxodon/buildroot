@@ -1,5 +1,5 @@
-config BR2_PACKAGE_TEGRA210_LINUX
-	bool "Tegra T210 Board Support Package"
+config BR2_PACKAGE_TEGRA210
+	bool "host Tegra T210 Board Support Package"
 	depends on BR2_PACKAGE_LINUX_NVIDIA
 	help
 	  NVIDIA Tegra210 board support package.

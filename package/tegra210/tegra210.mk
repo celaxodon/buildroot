@@ -4,30 +4,30 @@
 #
 ################################################################################
 
-TEGRA210_LINUX_VERSION = 32.4.2
-TEGRA210_LINUX_SITE = https://developer.nvidia.com/embedded/L4T/r32_Release_v4.2/t210ref_release_aarch64
-TEGRA210_LINUX_SOURCE = Tegra210_Linux_R$(TEGRA210_LINUX_VERSION)_aarch64.tbz2
+TEGRA210_VERSION = 32.4.2
+TEGRA210_SITE = https://developer.nvidia.com/embedded/L4T/r32_Release_v4.2/t210ref_release_aarch64
+TEGRA210_SOURCE = Tegra210_Linux_R$(TEGRA210_VERSION)_aarch64.tbz2
 # TODO: Double check this.
-TEGRA210_LINUX_LICENSE = NVIDIA Customer Software Agreement
-TEGRA210_LINUX_LICENSE_FILES = bootloader/LICENSE \
-			       bootloader/LICENSE.chkbdinfo \
-			       bootloader/LICENSE.mkbctpart \
-			       bootloader/LICENSE.mkbootimg \
-			       bootloader/LICENSE.mkgpt \
-			       bootloader/LICENSE.mksparse \
-			       bootloader/LICENSE.tos-mon-only.img.arm-trusted-firmware \
-			       bootloader/LICENSE.u-boot \
-			       bootloader/t210ref/LICENSE.cboot \
-			       bootloader/t210ref/LICENSE.sc7entry-firmware
+TEGRA210_LICENSE = NVIDIA Customer Software Agreement
+TEGRA210_LICENSE_FILES = bootloader/LICENSE \
+			 bootloader/LICENSE.chkbdinfo \
+			 bootloader/LICENSE.mkbctpart \
+			 bootloader/LICENSE.mkbootimg \
+			 bootloader/LICENSE.mkgpt \
+			 bootloader/LICENSE.mksparse \
+			 bootloader/LICENSE.tos-mon-only.img.arm-trusted-firmware \
+			 bootloader/LICENSE.u-boot \
+			 bootloader/t210ref/LICENSE.cboot \
+			 bootloader/t210ref/LICENSE.sc7entry-firmware
 
-TEGRA210_LINUX_REDISTRIBUTE = NO
-TEGRA210_LINUX_INSTALL_IMAGES = YES
-TEGRA210_LINUX_DEPENDENCIES = linux-nvidia linux uboot
-HOST_TEGRA210_LINUX_DEPENDENCIES = host-python
+TEGRA210_REDISTRIBUTE = NO
+TEGRA210_INSTALL_IMAGES = YES
+TEGRA210_DEPENDENCIES = linux-nvidia linux uboot
+HOST_TEGRA210_DEPENDENCIES = host-python
 
 # Collects files required for tegraflash.py
 # Also updates the flash.xml config file with values for the Jetson Nano SD (p3450-0000)
-define TEGRA210_LINUX_CONFIGURE_CMDS
+define TEGRA210_CONFIGURE_CMDS
 	cp $(@D)/bootloader/t210ref/nvtboot.bin $(@D)/bootloader/nvtboot.bin
 	cp $(@D)/bootloader/t210ref/cboot.bin $(@D)/bootloader/cboot.bin
 	cp $(@D)/bootloader/t210ref/warmboot.bin $(@D)/bootloader/warmboot.bin
@@ -65,18 +65,14 @@ define TEGRA210_LINUX_CONFIGURE_CMDS
 		$(@D)/bootloader/flash.xml
 endef
 
-# define COPY_DTB_FOR_SIGNING
-# 	cp $(BUILD_DIR)/linux-tegra-l4t-r$(TEGRA210_LINUX_VERSION)/arch/arm64/boot/dts/tegra210-p3448-0000-p3449-0000-b00.dtb \
-# 		$(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb
-# endef
 define COPY_DTB_FOR_SIGNING
 	cp $(BINARIES_DIR)/tegra210-p3448-0000-p3449-0000-b00.dtb \
 		$(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb
 endef
 
-TEGRA210_LINUX_PRE_BUILD_HOOKS += COPY_DTB_FOR_SIGNING
+TEGRA210_PRE_BUILD_HOOKS += COPY_DTB_FOR_SIGNING
 
-define TEGRA210_LINUX_BUILD_CMDS
+define TEGRA210_BUILD_CMDS
 	cd $(@D)/bootloader && \
 	./mkbootimg --kernel $(BINARIES_DIR)/u-boot.bin \
 	--ramdisk /dev/null \
@@ -97,7 +93,7 @@ define TEGRA210_LINUX_BUILD_CMDS
 
 endef
 
-define TEGRA210_LINUX_INSTALL_IMAGES_CMDS
+define TEGRA210_INSTALL_IMAGES_CMDS
 	$(INSTALL) -m 0644 $(@D)/bootloader/boot.img $(BINARIES_DIR)/boot.img
 	$(INSTALL) -m 0644 $(@D)/bootloader/bmp.blob $(BINARIES_DIR)/bmp.blob
 	$(INSTALL) -m 0644 $(@D)/bootloader/rp4.blob $(BINARIES_DIR)/rp4.blob
@@ -118,7 +114,7 @@ define TEGRA210_LINUX_INSTALL_IMAGES_CMDS
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/warmboot.bin.encrypt $(BINARIES_DIR)/warmboot.bin.encrypt
 endef
 
-define TEGRA210_LINUX_INSTALL_TARGET_CMDS
+define TEGRA210_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(@D)/bootloader/extlinux.conf $(TARGET_DIR)/boot/extlinux/extlinux.conf
 	$(INSTALL) -D -m 0644 $(@D)/bootloader/l4t_initrd.img $(TARGET_DIR)/boot/initrd
 	$(INSTALL) -D -m 0644 $(@D)/bootloader/nv_boot_control.conf $(TARGET_DIR)/etc/nv_boot_control.conf

@@ -1035,7 +1035,7 @@ F:  board/nvidia/jetson_nano/
 F:  package/hardware-nvidia/
 F:  package/linux-nvgpu/
 F:  package/linux-nvidia/
-F:  package/tegra210-linux/
+F:  package/tegra210/
 
 N:	Grzegorz Blach <grzegorz@blach.pl>
 F:	fs/f2fs/
