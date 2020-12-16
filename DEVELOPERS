@@ -1019,6 +1019,7 @@ F:	package/libwebsock/
 F:	package/sofia-sip/
 
 N:  Graham Leva <celaxodon@gmail.com>
+F:  package/linux-nvgpu/
 F:  package/linux-nvidia/
 
 N:	Grzegorz Blach <grzegorz@blach.pl>
