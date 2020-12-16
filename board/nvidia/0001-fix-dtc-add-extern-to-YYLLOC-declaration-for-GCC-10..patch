@@ -1,0 +1,33 @@
+From 882d4630693a93c3214b9b44466d5e2afe0417c4 Mon Sep 17 00:00:00 2001
+From: Graham Leva <celaxodon@gmail.com>
+Date: Tue, 15 Dec 2020 21:21:14 -0600
+Subject: [PATCH 1/1] fix(dtc): add `extern` to YYLLOC declaration for GCC 10.x
+
+GCC 10.x introduced the `-fno-common` option by default.
+See https://gcc.gnu.org/gcc-10/porting_to.html.
+
+This patch adds `extern` to a declaration in order to
+be able to cross-compile on hosts with GCC 10.x.
+
+Signed-off-by: Graham Leva <gleva@nvidia.com>
+Signed-off-by: Graham Leva <celaxodon@gmail.com>
+---
+ scripts/dtc/dtc-lexer.lex.c_shipped | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/dtc/dtc-lexer.lex.c_shipped b/scripts/dtc/dtc-lexer.lex.c_shipped
+index 2c862bc86ad0..4f91c16cac4f 100644
+--- a/scripts/dtc/dtc-lexer.lex.c_shipped
++++ b/scripts/dtc/dtc-lexer.lex.c_shipped
+@@ -631,7 +631,7 @@ char *yytext;
+ #include "srcpos.h"
+ #include "dtc-parser.tab.h"
+ 
+-YYLTYPE yylloc;
++extern YYLTYPE yylloc;
+ extern bool treesource_error;
+ 
+ /* CAUTION: this will stop working if we ever use yyless() or yyunput() */
+-- 
+2.26.2
+
