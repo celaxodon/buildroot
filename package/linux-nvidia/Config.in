@@ -1,5 +1,5 @@
 config BR2_PACKAGE_LINUX_NVIDIA
-	bool "Linux for Tegra"
+	bool
 	depends on BR2_LINUX_KERNEL
 	help
 	  NVIDIA Linux source code for Tegra

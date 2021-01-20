@@ -1,7 +1,6 @@
 config BR2_PACKAGE_LINUX_NVGPU
-	bool "Linux NVGPU Tegra driver"
+	bool
 	depends on BR2_LINUX_KERNEL
-	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
 	help
 	  The download helper for NVIDIA NVGPU Tegra driver kernel
 	  patches.

@@ -54,14 +54,26 @@ config BR2_LINUX_KERNEL_EXT_RTAI
 
 #-------------------------------------------------------------------------------
 # NVIDIA Linux drivers and patches
-config BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+config BR2_LINUX_KERNEL_NVIDIA_EXTENSIONS
     bool "NVIDIA Linux drivers and patches"
-    select BR2_PACKAGE_LINUX_NVIDIA
-    select BR2_PACKAGE_LINUX_NVGPU
     help
-      NVIDIA Linux kernel drivers and patches
+      NVIDIA Linux kernel extensions
 
       https://developer.nvidia.com/embedded/linux-tegra
+
+if BR2_LINUX_KERNEL_NVIDIA_EXTENSIONS
+
+config BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+	bool "NVIDIA Linux kernel drivers and patches"
+	default y
+	select BR2_PACKAGE_LINUX_NVIDIA
+
+config BR2_LINUX_KERNEL_EXT_LINUX_NVGPU
+	bool "NVIDIA Linux GPU drivers"
+	default y
+	select BR2_PACKAGE_LINUX_NVGPU
+
+endif #BR2_LINUX_KERNEL_NVIDIA_EXTENSIONS
 
 #-------------------------------------------------------------------------------
 # ev3dev Linux drivers
