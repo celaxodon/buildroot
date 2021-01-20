@@ -63,6 +63,8 @@ config BR2_LINUX_KERNEL_NVIDIA_EXTENSIONS
 
 if BR2_LINUX_KERNEL_NVIDIA_EXTENSIONS
 
+comment "Kernel Drivers"
+
 config BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
 	bool "NVIDIA Linux kernel drivers and patches"
 	default y
@@ -72,6 +74,38 @@ config BR2_LINUX_KERNEL_EXT_LINUX_NVGPU
 	bool "NVIDIA Linux GPU drivers"
 	default y
 	select BR2_PACKAGE_LINUX_NVGPU
+
+comment "Device Tree"
+
+config BR2_LINUX_KERNEL_EXT_PLATFORM_T210_COMMON
+	bool "Platform T210 Common"
+	default y
+	select BR2_PACKAGE_PLATFORM_T210_COMMON
+
+config BR2_LINUX_KERNEL_EXT_PLATFORM_T210_JETSON
+	bool "Platform T210 Jetson"
+	default y
+	select BR2_PACKAGE_PLATFORM_T210_JETSON
+
+config BR2_LINUX_KERNEL_EXT_PLATFORM_T210_PORG
+	bool "Platform T210 Porg"
+	default y
+	select BR2_PACKAGE_PLATFORM_T210_PORG
+
+config BR2_LINUX_KERNEL_EXT_PLATFORM_TEGRA_COMMON
+	bool "Platform Tegra Common"
+	default y
+	select BR2_PACKAGE_PLATFORM_TEGRA_COMMON
+
+config BR2_LINUX_KERNEL_EXT_SOC_T210
+	bool "SOC T210"
+	default y
+	select BR2_PACKAGE_SOC_T210
+
+config BR2_LINUX_KERNEL_EXT_SOC_TEGRA
+	bool "SOC Tegra"
+	default y
+	select BR2_PACKAGE_SOC_TEGRA
 
 endif #BR2_LINUX_KERNEL_NVIDIA_EXTENSIONS
 

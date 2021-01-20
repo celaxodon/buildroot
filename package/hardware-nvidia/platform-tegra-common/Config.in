@@ -1,6 +1,6 @@
 config BR2_PACKAGE_PLATFORM_TEGRA_COMMON
-	bool "Platform Tegra Common Device Tree Source"
-	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+	bool
+	depends on BR2_LINUX_KERNEL
 	help
 	  NVIDIA Tegra Common Device Tree Source
 

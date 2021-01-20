@@ -1,28 +1,9 @@
-menuconfig BR2_PACKAGE_HARDWARE_NVIDIA
-	bool "Nvidia hardware libraries"
-	depends on BR2_LINUX_KERNEL
-	select BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_COMMON
-	select BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_JETSON
-	select BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T210_PORG
-	select BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_TEGRA_COMMON
-	select BR2_PACKAGE_HARDWARE_NVIDIA_SOC_T210
-	select BR2_PACKAGE_HARDWARE_NVIDIA_SOC_TEGRA
-	help
-	  Linux NVIDIA hardware source trees
-
-	  These must be arranged into a specific directory structure.
-	  Mirrors Linux_for_Tegra/sources/hardware/nvidia
-
-if BR2_PACKAGE_HARDWARE_NVIDIA
-
 source "package/hardware-nvidia/platform-t210-common/Config.in"
 source "package/hardware-nvidia/platform-t210-jetson/Config.in"
 source "package/hardware-nvidia/platform-t210-porg/Config.in"
 source "package/hardware-nvidia/platform-tegra-common/Config.in"
 source "package/hardware-nvidia/soc-t210/Config.in"
 source "package/hardware-nvidia/soc-tegra/Config.in"
-
-endif
 
 # Unimplemented parts of the full DTS tree:
 # config BR2_PACKAGE_HARDWARE_NVIDIA_PLATFORM_T18X_COMMON

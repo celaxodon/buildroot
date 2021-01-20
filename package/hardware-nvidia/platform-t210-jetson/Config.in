@@ -1,6 +1,6 @@
 config BR2_PACKAGE_PLATFORM_T210_JETSON
-	bool "Platform T210 Jetson Device Tree Source"
-	depends on BR2_LINUX_KERNEL_EXT_LINUX_NVIDIA
+	bool
+	depends on BR2_LINUX_KERNEL
 	help
 	  NVIDIA T210 Jetson Device Tree Source
 
