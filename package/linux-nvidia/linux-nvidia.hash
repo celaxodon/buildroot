@@ -1,6 +1,2 @@
 # Locally calculated
-<<<<<<< HEAD
-sha256  ed1102afdce44bad4a016c95f361d281129f2125b8fd5616c837b7e8224eccd0  linux-nvidia-tegra-l4t-r32.4.2.tar.gz
-=======
-sha256  861fd2fde958323ff76abf1a254d6ce16419f26ccfb4cab3b2d00e31717d616f  linux-nvidia-tegra-l4t-r32.4.3.tar.gz
->>>>>>> upstream/feat/jetson-nano-support-latest
+sha256  522161d61fa81c769ca0a06c4ec7f3fd7d6def86fba0ca644afa9e29f01578a5  linux-nvidia-tegra-l4t-r32.5.tar.gz

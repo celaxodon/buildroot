@@ -1,6 +1,2 @@
 # Locally calculated
-<<<<<<< HEAD
-sha256 6fa0452410d406e02d86b1e67bd7e216a2cefa3d15375c00319b1f74ac8e8e75  platform-t210-porg-tegra-l4t-r32.4.2.tar.gz
-=======
-sha256 c8b0c4becd20ce5f0ce6de1931493301ae72e4bfbe139c9638be3076fa68e7ac  platform-t210-porg-tegra-l4t-r32.4.3.tar.gz
->>>>>>> upstream/feat/jetson-nano-support-latest
+sha256 1a98f06db96e5bc88aca712c90034dfacd1e2a99d46c827f00fe26d24dc7ffa8  platform-t210-porg-tegra-l4t-r32.5.tar.gz

@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-TEGRA210_VERSION = 32.4.3
-TEGRA210_SITE = https://developer.nvidia.com/embedded/L4T/r32_Release_v4.3/t210ref_release_aarch64
+TEGRA210_VERSION = 32.5
+TEGRA210_SITE = https://developer.nvidia.com/embedded/L4T/r32_Release_v5.0/t210ref_release_aarch64
 TEGRA210_SOURCE = Tegra210_Linux_R$(TEGRA210_VERSION)_aarch64.tbz2
 # TODO: Double check this.
 TEGRA210_LICENSE = NVIDIA Customer Software Agreement
