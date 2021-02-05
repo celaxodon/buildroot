@@ -144,6 +144,28 @@ endif
 
 ###############################################################################
 
+comment "Legacy options removed in 2021.02"
+
+config BR2_powerpc_601
+	bool "PowerPC 601 support removed"
+	select BR2_LEGACY
+	help
+	  The support for the PowerPC 601 processors has been removed.
+
+config BR2_PACKAGE_TI_SGX_LIBGBM
+	bool "ti-sgx-libgbm support removed"
+	select BR2_LEGACY
+	help
+	  TI has merged the ti-sgx-libgbm package with the ti-sgx-um
+	  package
+
+config BR2_PACKAGE_IPSEC_TOOLS
+	bool "ipsec-tools package was removed"
+	select BR2_LEGACY
+	help
+	  This package has been removed as it has security issues and
+	  has been abandoned since 2014.
+
 comment "Legacy options removed in 2020.11"
 
 config BR2_PACKAGE_OPENCV

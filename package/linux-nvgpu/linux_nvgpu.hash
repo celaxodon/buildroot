@@ -1,2 +1,6 @@
 # Locally calculated
+<<<<<<< HEAD
 sha256  23edd93a980161a147f34fcb8b07b9a1c04967439ebcd4356607fe1b4923f904  linux-nvgpu-tegra-l4t-r32.4.2.tar.gz
+=======
+sha256  50178328da1a32d1bf76b129bb9afe3aa1172160f50d911554586eb7cc135494  linux-nvgpu-tegra-l4t-r32.4.3.tar.gz
+>>>>>>> upstream/feat/jetson-nano-support-latest

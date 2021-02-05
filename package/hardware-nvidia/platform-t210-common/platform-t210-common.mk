@@ -6,7 +6,11 @@
 
 PLATFORM_T210_COMMON_LICENSE = GPL-2.0
 PLATFORM_T210_COMMON_LICENSE_FILES = kernel-dts/tegra210-linux-4.14.dtsi
+<<<<<<< HEAD
 PLATFORM_T210_COMMON_VERSION = tegra-l4t-r32.4.2
+=======
+PLATFORM_T210_COMMON_VERSION = tegra-l4t-r32.4.3
+>>>>>>> upstream/feat/jetson-nano-support-latest
 PLATFORM_T210_COMMON_SITE = git://nv-tegra.nvidia.com/device/hardware/nvidia/platform/t210/common.git
 
 define PLATFORM_T210_COMMON_CONFIGURE_CMDS

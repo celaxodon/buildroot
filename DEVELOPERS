@@ -169,6 +169,9 @@ F:	package/python-pillow/
 F:	package/python-pydal/
 F:	package/python-spidev/
 F:	package/python-web2py/
+F:	package/qt5/qt5coap/
+F:	package/qt5/qt5knx/
+F:	package/qt5/qt5mqtt/
 F:	package/sam-ba/
 F:	package/sshguard/
 F:	package/sunwait/
@@ -921,6 +924,7 @@ F:	package/netsurf/
 F:	package/perl*
 F:	package/pkg-perl.mk
 F:	package/pkg-luarocks.mk
+F:	package/quickjs/
 F:	package/rings/
 F:	package/tekui/
 F:	package/wpebackend-fdo/
@@ -1019,7 +1023,11 @@ F:  board/nvidia/jetson_nano/
 F:  package/hardware-nvidia/
 F:  package/linux-nvgpu/
 F:  package/linux-nvidia/
+<<<<<<< HEAD
 F:  package/tegra210-linux/
+=======
+F:  package/tegra210/
+>>>>>>> upstream/feat/jetson-nano-support-latest
 
 N:	Grzegorz Blach <grzegorz@blach.pl>
 F:	fs/f2fs/
@@ -1381,6 +1389,7 @@ F:	package/libnss/
 F:	package/lld/
 F:	package/llvm/
 F:	package/python-cython/
+F:	package/python-pycups/
 F:	package/python-raven/
 F:	package/python-schedule/
 F:	package/python-sentry-sdk/
@@ -1506,7 +1515,6 @@ F:	configs/bananapi_m2_ultra_defconfig
 F:	configs/beaglebone_defconfig
 F:	configs/beaglebone_qt5_defconfig
 F:	package/ti-sgx-demos/
-F:	package/ti-sgx-libgbm/
 F:	package/ti-sgx-km/
 F:	package/ti-sgx-um/
 
@@ -1869,6 +1877,9 @@ F:	package/skeleton-init-openrc/
 N:	Michel Stempin <michel.stempin@wanadoo.fr>
 F:	board/licheepi/
 F:	configs/licheepi_zero_defconfig
+
+N:	Mike Frampton <mikeframpo@gmail.com>
+F:	package/qcom-db410c-firmware/
 
 N:	Mike Harmony <mike.harmony@snapav.com>
 F:	board/sinovoip/m2-plus/
