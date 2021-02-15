@@ -46,7 +46,7 @@ define TEGRA210_CONFIGURE_CMDS
 		-e 's/TXS/TOS/' \
 		-e 's/TOSFILE/tos-mon-only.img/' \
 		-e 's/TBCTYPE/bootloader/' \
-		-e 's/DTBFILE/tegra210-p3448-0000-p3449-0000-b00.dtb/' \
+		-e "s/DTBFILE/"$(BR2_LINUX_KERNEL_INTREE_DTS_NAME)".dtb/" \
 		-e 's/WB0TYPE/WB0/' \
 		-e 's/WB0FILE/warmboot.bin/' \
 		-e 's/BXF/BPF/' \
@@ -66,8 +66,8 @@ define TEGRA210_CONFIGURE_CMDS
 endef
 
 define COPY_DTB_FOR_SIGNING
-	cp $(BINARIES_DIR)/tegra210-p3448-0000-p3449-0000-b00.dtb \
-		$(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb
+	cp $(BINARIES_DIR)/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb \
+		$(@D)/bootloader/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb
 endef
 
 TEGRA210_PRE_BUILD_HOOKS += COPY_DTB_FOR_SIGNING
@@ -84,12 +84,12 @@ define TEGRA210_BUILD_CMDS
 	./tegraflash.py --bl cboot.bin \
 	--bct P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.cfg \
 	--odmdata 0x94000 \
-	--bldtb tegra210-p3448-0000-p3449-0000-b00.dtb \
+	--bldtb $(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb \
 	--applet nvtboot_recovery.bin \
 	--cmd "sign" \
 	--cfg flash.xml \
 	--chip 0x21 \
-	--bins "EBT cboot.bin; DTB tegra210-p3448-0000-p3449-0000-b00.dtb"
+	--bins "EBT cboot.bin; DTB $(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb"
 
 endef
 
@@ -108,8 +108,8 @@ define TEGRA210_INSTALL_IMAGES_CMDS
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct \
 		$(BINARIES_DIR)/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/sc7entry-firmware.bin.encrypt $(BINARIES_DIR)/sc7entry-firmware.bin.encrypt
-	$(INSTALL) -m 0644 $(@D)/bootloader/signed/tegra210-p3448-0000-p3449-0000-b00.dtb.encrypt \
-		$(BINARIES_DIR)/tegra210-p3448-0000-p3449-0000-b00.dtb.encrypt
+	$(INSTALL) -m 0644 $(@D)/bootloader/signed/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb.encrypt \
+		$(BINARIES_DIR)/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb.encrypt
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/tos-mon-only.img.encrypt $(BINARIES_DIR)/tos-mon-only.img.encrypt
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/warmboot.bin.encrypt $(BINARIES_DIR)/warmboot.bin.encrypt
 endef
@@ -128,8 +128,8 @@ define TEGRA210_INSTALL_TARGET_CMDS
 	sed -i /TEGRA_OTA_GPT_DEVICE/d $(TARGET_DIR)/etc/nv_boot_control.conf
 	sed -i '$$ a TEGRA_OTA_GPT_DEVICE /dev/mtdblock0' $(TARGET_DIR)/etc/nv_boot_control.conf
 
-	$(INSTALL) -D -m 0644 -D $(@D)/bootloader/tegra210-p3448-0000-p3449-0000-b00.dtb \
-		$(TARGET_DIR)/boot/tegra210-p3448-0000-p3449-0000-b00.dtb
+	$(INSTALL) -D -m 0644 -D $(@D)/bootloader/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb \
+		$(TARGET_DIR)/boot/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb
 endef
 
 $(eval $(generic-package))
