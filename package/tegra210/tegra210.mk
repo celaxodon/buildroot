@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-TEGRA210_VERSION = 32.4.3
-TEGRA210_SITE = https://developer.nvidia.com/embedded/L4T/r32_Release_v4.3/t210ref_release_aarch64
+TEGRA210_VERSION = 32.5.0
+TEGRA210_SITE = https://developer.nvidia.com/embedded/L4T/r32_Release_v5.0/T210
 TEGRA210_SOURCE = Tegra210_Linux_R$(TEGRA210_VERSION)_aarch64.tbz2
 # TODO: Double check this.
 TEGRA210_LICENSE = NVIDIA Customer Software Agreement
@@ -32,8 +32,8 @@ define TEGRA210_CONFIGURE_CMDS
 	cp $(@D)/bootloader/t210ref/cboot.bin $(@D)/bootloader/cboot.bin
 	cp $(@D)/bootloader/t210ref/warmboot.bin $(@D)/bootloader/warmboot.bin
 	cp $(@D)/bootloader/t210ref/sc7entry-firmware.bin $(@D)/bootloader/sc7entry-firmware.bin
-	cp $(@D)/bootloader/t210ref/BCT/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.cfg \
-		$(@D)/bootloader/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.cfg
+	cp $(@D)/bootloader/t210ref/BCT/P3448_A00_lpddr4_204Mhz_P987.cfg \
+		$(@D)/bootloader/P3448_A00_lpddr4_204Mhz_P987.cfg
 	cp $(@D)/bootloader/t210ref/cfg/flash_l4t_t210_spi_sd_p3448.xml $(@D)/bootloader/flash.xml
 
 	sed -i -e 's/NXC/NVC/' \
@@ -82,7 +82,7 @@ define TEGRA210_BUILD_CMDS
 
 	cd $(@D)/bootloader && \
 	./tegraflash.py --bl cboot.bin \
-	--bct P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.cfg \
+	--bct P3448_A00_lpddr4_204Mhz_P987.cfg \
 	--odmdata 0x94000 \
 	--bldtb $(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb \
 	--applet nvtboot_recovery.bin \
@@ -105,8 +105,8 @@ define TEGRA210_INSTALL_IMAGES_CMDS
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/flash.xml.bin $(BINARIES_DIR)/flash.xml.bin
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/nvtboot.bin.encrypt $(BINARIES_DIR)/nvtboot.bin.encrypt
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/nvtboot_cpu.bin.encrypt $(BINARIES_DIR)/nvtboot_cpu.bin.encrypt
-	$(INSTALL) -m 0644 $(@D)/bootloader/signed/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct \
-		$(BINARIES_DIR)/P3448_A00_4GB_Micron_4GB_lpddr4_204Mhz_P987.bct
+	$(INSTALL) -m 0644 $(@D)/bootloader/signed/P3448_A00_lpddr4_204Mhz_P987.bct \
+		$(BINARIES_DIR)/P3448_A00_lpddr4_204Mhz_P987.bct
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/sc7entry-firmware.bin.encrypt $(BINARIES_DIR)/sc7entry-firmware.bin.encrypt
 	$(INSTALL) -m 0644 $(@D)/bootloader/signed/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb.encrypt \
 		$(BINARIES_DIR)/$(BR2_LINUX_KERNEL_INTREE_DTS_NAME).dtb.encrypt
