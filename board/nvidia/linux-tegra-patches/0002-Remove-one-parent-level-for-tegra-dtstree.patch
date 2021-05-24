@@ -1,0 +1,29 @@
+From 002efd7b35da4ed6f2148fa42b4869b103e9fa90 Mon Sep 17 00:00:00 2001
+From: Howard Mitchell <hm@hmbedded.co.uk>
+Date: Tue, 26 Jan 2021 12:07:54 +0000
+Subject: [PATCH] Remove one parent level for 'tegra-dtstree'
+
+---
+ scripts/Kbuild.include | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/scripts/Kbuild.include b/scripts/Kbuild.include
+index a9aaabc..c75c3b1 100644
+--- a/scripts/Kbuild.include
++++ b/scripts/Kbuild.include
+@@ -478,11 +478,7 @@ _KERNEL_LAST = $(lastword $(subst /, ,$(realpath $(srctree))))
+ tegra-base-kernel-path = $(call _TEGRA_REL_PATH)/$(call _KERNEL_LAST)
+ tegra-path = $(if  $(wildcard $(srctree)/../$(1)),$(call _TEGRA_REL_PATH)/$(1)/$(2),$(call tegra-base-kernel-path)/$(2))
+ 
+-ifneq ($(NV_BUILD_KERNEL_DTS_ROOT),)
+-tegra-dtstree = $(NV_BUILD_KERNEL_DTS_ROOT)
+-else
+-tegra-dtstree = $(srctree)/../../hardware/nvidia
+-endif
++tegra-dtstree = $(srctree)/../hardware/nvidia
+ 
+ tegra-root-dtstree = $(subst ^$(realpath $(tegra-dtstree)/../..)/,,^$(realpath $(srctree)/arch/arm64/boot/dts))
+ tegra-rel-dtstree = $(subst $(the-space),/,$(patsubst %,..,$(subst /, ,$(tegra-root-dtstree))))
+-- 
+2.17.1
+
